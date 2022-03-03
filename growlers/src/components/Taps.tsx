@@ -4,10 +4,16 @@ import { Box } from "@chakra-ui/react";
 import BeverageCard from "./BeverageCard";
 import { MFE_BORDER } from "../constants";
 
+import { useSnapshot } from 'valtio';
+import store from "../store";
+
 const Taps = () => {
+
+  const {filteredTaps} = useSnapshot(store);
+
   return (
     <Box border={MFE_BORDER}>
-      {[].map((beverage) => (
+      {filteredTaps.map((beverage) => (
         <BeverageCard
           key={[beverage.producerName, beverage.beverageName].join("")}
           beverage={beverage}
@@ -18,3 +24,4 @@ const Taps = () => {
 };
 
 export default Taps;
+ 
